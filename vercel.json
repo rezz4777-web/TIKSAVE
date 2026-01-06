@@ -1,7 +1,13 @@
 {
   "version": 2,
   "public": true,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
+  "builds": [
+    { "src": "api/download.js", "use": "@vercel/node" },
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "script.js", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/download", "dest": "/api/download.js" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
